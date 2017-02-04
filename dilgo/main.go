@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	//"github/chr1sto14/dilbert/formathipchat"
+	"github/chr1sto14/dilbert/formathipchat"
 	"github/chr1sto14/dilbert/net"
 	"log"
 	"os"
@@ -33,14 +33,19 @@ func main() {
 	}
 
 	log.Println("Fetching latest comic...")
-	webbytes, err := net.FetchUrl(dilberturl)
+	webbody, err := net.FetchUrl(dilberturl)
 	if err != nil {
 		log.Fatalln("Error: ", err)
 	}
 
-	fmt.Println("HTML:\n\n", string(webbytes))
-	/*title, img, err =
+	msg, err := formathipchat.Format(webbody)
 	if err != nil {
 		log.Fatalln("Error: ", err)
-	}*/
+	}
+
+	err = net.PostMsg(*url, msg)
+	if err != nil {
+		log.Fatalln("Error: ", err)
+	}
+	log.Println("Comic posted to hipchat.")
 }
