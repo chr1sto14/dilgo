@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"golang.org/x/net/html"
-	"io"
+	"strings"
 )
 
 type Message struct {
@@ -34,8 +34,8 @@ func getTagAttr(t html.Token, tag string) (val string, err error) {
 	return
 }
 
-func parseHtml(body io.Reader) (title string, src string, err error) {
-	z := html.NewTokenizer(body)
+func parseHtml(data []byte) (title string, src string, err error) {
+	z := html.NewTokenizer(strings.NewReader(string(data)))
 
 	for {
 		tt := z.Next()
@@ -67,8 +67,8 @@ func parseHtml(body io.Reader) (title string, src string, err error) {
 	return
 }
 
-func Format(body io.Reader) (Message, error) {
-	title, src, err := parseHtml(body)
+func Format(data []byte) (Message, error) {
+	title, src, err := parseHtml(data)
 	if err != nil {
 		return Message{}, err
 	}
