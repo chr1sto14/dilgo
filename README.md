@@ -8,10 +8,3 @@ Example:
 ```
 $ dilgo -url="my-special-hipchat-url"
 ```
-
-
-# Installation
-
-```
-$ go get github.com/chr1sto14/dilgo
-```
