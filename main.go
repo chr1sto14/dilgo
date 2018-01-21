@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github/chr1sto14/dilbert/formathipchat"
-	"github/chr1sto14/dilbert/net"
+	"github.com/chr1sto14/dilgo/formathipchat"
+	"github.com/chr1sto14/dilgo/net"
 	"log"
 	"os"
 )

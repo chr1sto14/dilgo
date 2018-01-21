@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github/chr1sto14/dilbert/formathipchat"
+	"github.com/chr1sto14/dilgo/formathipchat"
 	"io/ioutil"
 	"net/http"
 )
